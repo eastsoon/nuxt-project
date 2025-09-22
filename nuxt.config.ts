@@ -4,5 +4,20 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   typescript: {
     shim: false,
+  },
+  modules: [
+    '@nuxt/eslint',
+    'nuxt-quasar-ui'
+  ],
+  quasar: {
+    // Quasar 설정
+  },
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 'tab',
+        semi: true,
+      }
+    }
   }
 })
