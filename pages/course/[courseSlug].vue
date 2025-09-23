@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-xl">
+    <div>
       <AppCard>
         <template #header>
           <div class="text-h5 text-weight-medium">{{ course?.title }}</div>
@@ -47,6 +47,29 @@
           </div>
         </div>
         <p class="q-mt-lg text-grey-8">{{ course?.content }}</p>
+
+        <q-separator class="q-my-lg" />
+        <q-form class="q-gutter-y-md">
+          <q-btn
+            label="수강완료"
+            class="full-width"
+            color="green"
+            unelevated
+            :outline="completed ? false : true"
+            :icon="completed ? 'check' : undefined"
+            @click="completed = !completed"
+          />
+          <q-input
+            v-model="memo"
+            type="textarea"
+            outlined
+            dense
+            placeholder="메모를 작성해주세요."
+            rows="3"
+            autogrow
+          />
+        </q-form>
+
         <template #footer>
           <q-btn 
           v-if="prevCourse"
@@ -72,7 +95,10 @@ const { courseSlug } = route.params as { courseSlug: string };
 const { course, prevCourse, nextCourse } = useCourse(courseSlug as string);
 definePageMeta({
   key: (route) => route.fullPath,
+  keepalive: true,
 });
+const completed = ref(false);
+const memo = ref('');
 </script>
   
 <style scoped></style>
