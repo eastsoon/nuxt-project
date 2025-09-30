@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     shim: false,
     typeCheck: true,
   },
-  modules: ["nuxt-quasar-ui", '@nuxt/eslint'],
+  ssr: true,
+  modules: ["nuxt-quasar-ui", "@nuxt/eslint"],
   quasar: {
     /* */
   },
