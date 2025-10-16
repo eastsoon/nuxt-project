@@ -26,6 +26,7 @@
   "license": "ISC",
   "devDependencies": {
     "@nuxt/eslint": "^1.9.0",
+    "@types/node": "^24.7.1",
     "eslint": "^9.36.0",
     "nuxt-quasar-ui": "^2.1.13",
     "typescript": "^5.9.2",
