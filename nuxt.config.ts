@@ -6,7 +6,12 @@ export default defineNuxtConfig({
     typeCheck: true,
   },
   ssr: true,
-  modules: ["nuxt-quasar-ui", "@nuxt/eslint", "@pinia/nuxt"],
+  modules: [
+    "nuxt-quasar-ui",
+    "@nuxt/eslint",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+  ],
   quasar: {
     /* */
   },

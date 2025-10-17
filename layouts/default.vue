@@ -59,34 +59,38 @@
           </q-list>
         </q-btn-dropdown>
         <q-separator dark vertical />
-        <NuxtLink
-          v-if="!isAuthenticated"
-          v-slot="{ navigate }"
-          custom
-          to="/login"
-        >
+        <ClientOnly>
+          <NuxtLink
+            v-if="!isAuthenticated"
+            v-slot="{ navigate }"
+            custom
+            to="/login"
+          >
+            <q-btn
+              stretch
+              flat
+              :label="$t('login')"
+              no-caps
+              @click="navigate()"
+            />
+          </NuxtLink>
           <q-btn
+            v-else
             stretch
             flat
-            :label="$t('login')"
+            :label="$t('logout')"
             no-caps
-            @click="navigate()"
+            @click="signOut"
           />
-        </NuxtLink>
-        <q-btn
-          v-else
-          stretch
-          flat
-          :label="$t('logout')"
-          no-caps
-          @click="signOut"
-        />
+        </ClientOnly>
       </q-toolbar>
     </q-header>
     <q-page-container :style="pageContainerStyle">
-      <q-banner v-if="isAuthenticated" class="bg-primary text-white">
-        {{ authUser }}
-      </q-banner>
+      <ClientOnly>
+        <q-banner v-if="isAuthenticated" class="bg-primary text-white">
+          {{ authUser }}
+        </q-banner>
+      </ClientOnly>
       <slot></slot>
     </q-page-container>
   </q-layout>
