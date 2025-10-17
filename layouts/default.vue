@@ -79,7 +79,7 @@
           flat
           :label="$t('logout')"
           no-caps
-          @click="singOut"
+          @click="signOut"
         />
       </q-toolbar>
     </q-header>
@@ -94,10 +94,9 @@
 <script setup lang="ts">
 // import { useI18n } from "vue-i18n";
 
-const authUser = useAuthUser();
-const isAuthenticated = useAuthenticated();
-
-const { singOut } = useAuth();
+const authStore = useAuthStore();
+const { user: authUser, isAuthenticated } = storeToRefs(authStore);
+const { signOut } = authStore;
 
 const pageContainerStyle = computed(() => ({
   maxWidth: "1080px",

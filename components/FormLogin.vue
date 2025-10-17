@@ -26,7 +26,7 @@ const emit = defineEmits<{
 }>();
 // const emit = defineEmits(['success']);
 
-const { singIn } = useAuth();
+const { signIn } = useAuthStore();
 
 const form = ref({
   email: "",
@@ -40,7 +40,7 @@ const handleLoginSubmit = () => {
     error.value = null;
     loading.value = true;
 
-    singIn(form.value.email, form.value.passwowrd);
+    signIn(form.value.email, form.value.passwowrd);
     // login business logic
 
     emit("success");
