@@ -94,7 +94,8 @@
 <script setup lang="ts">
 // import { useI18n } from "vue-i18n";
 
-const { authUser, isAuthenticated } = useAuthUser();
+const authUser = useAuthUser();
+const isAuthenticated = useAuthenticated();
 
 const { singOut } = useAuth();
 
